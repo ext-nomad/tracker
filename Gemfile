@@ -30,6 +30,8 @@ group :test do
   gem 'webdrivers'
 end
 
+gem 'devise'
 gem 'faker'
 gem 'hirb'
+gem 'simple_form'
 gem 'slim-rails'
