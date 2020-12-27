@@ -5,4 +5,4 @@ require("channels");
 
 import "bootstrap/dist/js/bootstrap";
 import "bootstrap/dist/css/bootstrap";
-require("stylesheets/custom.scss");
+require("stylesheets/application.scss");
