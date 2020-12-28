@@ -33,5 +33,6 @@ end
 gem 'devise'
 gem 'faker'
 gem 'hirb'
+gem 'iex-ruby-client'
 gem 'simple_form'
 gem 'slim-rails'

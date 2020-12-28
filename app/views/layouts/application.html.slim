@@ -9,7 +9,7 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   body
-    header
+    header.shadow
       = render 'layouts/header'
 
     main
@@ -18,5 +18,5 @@ html
 
         = yield
 
-    footer
+    footer.shadow-lg
       = render 'layouts/footer'
