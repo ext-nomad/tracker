@@ -3,20 +3,15 @@
   br
   .row
     .col-md-4
-      = link_to t('.teach')
-      .row
       = t('.business')
       .row
-      = t('.about')
+      = link_to about_path do
+        = t('.about')
     .col-md-4
       = link_to t('.policy')
       .row
-      = t('.terms')
-      .row
       = t('.help')
     .col-md-4
-      br
-      / .fa.fa-envelope
       = mail_to 'i.dwanderer@gmail.com'
       .row
       | © A.E.V.,
