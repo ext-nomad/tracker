@@ -10,3 +10,15 @@
           = button_tag type: :submit, class: 'btn-success btn-block btn-lg' do
             .fas.fa-search.mr-1
             | Search
+- if @stock
+  .col-sm-9
+    .card
+      .card-header
+        .row.justify-content-between
+          .col-auto
+            = @stock.ticker
+          .col-auto
+            strong= @stock.name
+          .col-auto
+            | Price: 
+            = @stock.last_price
