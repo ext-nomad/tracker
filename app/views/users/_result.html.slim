@@ -1,0 +1,12 @@
+- if @stock
+  .col-sm-9
+    .card
+      .card-header
+        .row.justify-content-between
+          .col-auto
+            = @stock.ticker
+          .col-auto
+            strong= @stock.name
+          .col-auto
+            | Price: 
+            = @stock.last_price

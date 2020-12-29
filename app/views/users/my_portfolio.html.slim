@@ -2,7 +2,7 @@
   h1 My Portfolio
   .search-area
     h3 Search Stocks
-    = form_tag search_stock_path, method: :get do
+    = form_tag search_stock_path, remote: true, method: :get do
       .form-group.row.mt-3
         .col-sm-9
           = text_field_tag :stock, params[:stock], placeholder: 'Stock ticker symbol', autofocus: true, class: 'form-control form-control-lg'
@@ -10,15 +10,7 @@
           = button_tag type: :submit, class: 'btn-success btn-block btn-lg' do
             .fas.fa-search.mr-1
             | Search
-- if @stock
-  .col-sm-9
-    .card
-      .card-header
-        .row.justify-content-between
-          .col-auto
-            = @stock.ticker
-          .col-auto
-            strong= @stock.name
-          .col-auto
-            | Price: 
-            = @stock.last_price
+
+div id='results'
+
+/ = render 'users/result'
