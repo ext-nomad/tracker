@@ -4,6 +4,8 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable
+  has_many :user_stocks
+  has_many :stocks, through: :user_stocks
 
   def username
     email.split('@').first
