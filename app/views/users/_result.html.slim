@@ -10,5 +10,7 @@
           .col-auto
             | Price: 
             = @stock.last_price
+        = link_to user_stocks_path(user: current_user, ticker: @stock.ticker), class: 'stretched-link', method: :post do
+          |
   -else
     = render 'layouts/messages'

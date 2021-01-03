@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :user_stocks
-  get 'stocks/search'
   devise_for :users
+  resources :user_stocks, only: %i[create]
 
   root 'home#index'
   get 'about', to: 'home#about'
