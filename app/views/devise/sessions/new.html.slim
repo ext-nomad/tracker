@@ -1,5 +1,8 @@
 .d-flex.justify-content-center
   .col-8
+    .text-center.mb-5
+      h1
+        strong You need to login before proceed
     .card.text-center.shadow
       .card-header
         h2
@@ -7,8 +10,8 @@
       .card-body
         = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .form-inputs
-            = f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" }
-            = f.input :password, required: false, input_html: { autocomplete: "current-password" }
+            = f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email", value: 'exp@exp.com' }
+            = f.input :password, required: false, input_html: { autocomplete: "current-password", value: 'exp@exp.com' }
             = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
           .form-actions
             = f.button :submit, "Log in", class: 'btn btn-secondary'

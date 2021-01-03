@@ -3,36 +3,37 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
   .container 
     = link_to root_path, class: 'navbar-brand' do
       | StockTracker
-    button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button" 
-      span.navbar-toggler-icon
+    - if current_user
+      button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button" 
+        span.navbar-toggler-icon
 
-    #navbarSupportedContent.collapse.navbar-collapse
-      ul.navbar-nav.ml-auto
-        li class="nav-item #{'active' if current_page?(my_portfolio_path)}"
-          = link_to my_portfolio_path, class: "nav-link" do
-            = t('.portfolio')
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.ml-auto
+          li class="nav-item #{'active' if current_page?(my_portfolio_path)}"
+            = link_to my_portfolio_path, class: "nav-link" do
+              = t('.portfolio')
 
-        li class="nav-item #{'active' if current_page?(root_path)}"
-          = link_to root_path, class: "nav-link" do
-            = t('.home')
+          li class="nav-item #{'active' if current_page?(root_path)}"
+            = link_to root_path, class: "nav-link" do
+              = t('.home')
 
-        li class="nav-item #{'active' if current_page?(about_path)}"
-          = link_to about_path, class: "nav-link" do
-            = t('.about')
-  
-        li.nav-item.dropdown.ml-5
-          a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-            - if current_user
-              = "[#{current_user.username}]"
-            -else
-              | Account
-          .dropdown-menu aria-labelledby="navbarDropdown"
-            - if current_user
-              = link_to edit_user_registration_path, class: "dropdown-item #{'active' if current_page?(edit_user_registration_path)}" do
-                = t('.edit_account')
-              = link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do
-                = t('.log_out')
-            - else
-              = link_to t('register'), new_user_registration_path, class: "dropdown-item #{'active' if current_page?(new_user_registration_path)}"
+          li class="nav-item #{'active' if current_page?(about_path)}"
+            = link_to about_path, class: "nav-link" do
+              = t('.about')
+    
+          li.nav-item.dropdown.ml-5
+            a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              - if current_user
+                = "[#{current_user.username}]"
+              -else
+                | Account
+            .dropdown-menu aria-labelledby="navbarDropdown"
+              - if current_user
+                = link_to edit_user_registration_path, class: "dropdown-item #{'active' if current_page?(edit_user_registration_path)}" do
+                  = t('.edit_account')
+                = link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do
+                  = t('.log_out')
+              - else
+                = link_to t('register'), new_user_registration_path, class: "dropdown-item #{'active' if current_page?(new_user_registration_path)}"
 
-              = link_to t('log_in'), new_user_session_path, class: "dropdown-item #{'active' if current_page?(new_user_session_path)}"
+                = link_to t('log_in'), new_user_session_path, class: "dropdown-item #{'active' if current_page?(new_user_session_path)}"
