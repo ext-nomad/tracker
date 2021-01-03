@@ -13,4 +13,17 @@
 
 div id='results'
 
-/ = render 'users/result'
+.col-sm-9
+  table.table.table-hover.text-center
+    thead
+      tr
+        th scope="col"  Ticker
+        th scope="col"  Company name
+        th scope="col"  Last price
+    tbody
+      - if @tracked_stocks.any?
+        - @tracked_stocks.each do |stock|
+          = render 'users/stock', stock: stock
+      - else
+        tr
+          td colspan="3" You dont have any tracked stocks yet
