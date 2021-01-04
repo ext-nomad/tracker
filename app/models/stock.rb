@@ -3,6 +3,7 @@ class Stock < ApplicationRecord
   has_many :users, through: :user_stocks
 
   validates :name, :ticker, presence: true
+  before_save { self.ticker = ticker.upcase }
 
   def self.new_lookup(ticker_symbol)
     client = IEX::Api::Client.new(

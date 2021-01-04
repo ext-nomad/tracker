@@ -2,15 +2,24 @@
   - if @stock
     .card.mb-3
       .card-header
-        .row.justify-content-between
-          .col-auto
-            = @stock.ticker
-          .col-auto
-            strong= @stock.name
-          .col-auto
-            | Price: 
-            = @stock.last_price
-        = link_to user_stocks_path(user: current_user, ticker: @stock.ticker), class: 'stretched-link', method: :post do
-          |
+        - if current_user.can_track_stock?(@stock.ticker)
+          .row.justify-content-between
+            .col-auto
+              = @stock.ticker
+            .col-auto
+              strong= @stock.name
+            .col-auto
+              | Price: 
+              = @stock.last_price
+          = link_to user_stocks_path(user: current_user, ticker: @stock.ticker), class: 'stretched-link', method: :post do
+            |
+        - else
+          .text-center
+            strong
+              | You are already tracking
+              - if !current_user.under_stock_limit?
+                |  10 stocks
+              - else
+                |  this stock
   -else
     = render 'layouts/messages'
