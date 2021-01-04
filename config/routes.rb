@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :user_stocks, only: %i[create]
+  resources :user_stocks, only: %i[create destroy]
 
   root 'home#index'
   get 'about', to: 'home#about'
