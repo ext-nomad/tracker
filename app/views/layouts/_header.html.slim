@@ -12,10 +12,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           li class="nav-item #{'active' if current_page?(my_portfolio_path)}"
             = link_to my_portfolio_path, class: "nav-link" do
               = t('.portfolio')
-
-          li class="nav-item #{'active' if current_page?(root_path)}"
-            = link_to root_path, class: "nav-link" do
-              = t('.home')
+          
+          li class="nav-item #{'active' if current_page?(my_friends_path)}"
+            = link_to my_friends_path, class: "nav-link" do
+              = t('.friends')
 
           li class="nav-item #{'active' if current_page?(about_path)}"
             = link_to about_path, class: "nav-link" do

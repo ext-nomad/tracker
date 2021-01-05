@@ -1,0 +1,16 @@
+.text-center
+  h1 My Friends
+
+table.table.table-hover.text-center
+  thead
+    tr
+      th scope="col"  EMail
+      th scope="col"  First name
+      th scope="col"  Last name
+  tbody
+    - if @friends.any?
+      - @friends.each do |friend|
+        = render 'users/friend', user: friend
+    - else
+      tr
+        td colspan="3" You are not following any persons yet
