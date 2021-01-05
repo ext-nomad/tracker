@@ -14,17 +14,18 @@
               p
                 | Currently waiting confirmation for: 
                 = resource.unconfirmed_email
+            .row
+              .col-md-6
+                = f.input :first_name, required: false, input_html: { autocomplete: false }
+              .col-md-6
+                = f.input :last_name, required: false, input_html: { autocomplete: false }
             = f.input :password, hint: "leave it blank if you don't want to change it", required: false, input_html: { autocomplete: "new-password" }
             = f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password" }
             = f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { autocomplete: "current-password" }
           .form-actions
-            = f.button :submit, "Update"
+            = f.button :submit, "Update", class: 'btn btn-success'
       .card-footer
         .text-right
-          / h3
-          /   | Cancel my account
-          / p
-          /   | Unhappy? 
           = link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
           .row
           = link_to "Back", :back

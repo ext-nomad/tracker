@@ -24,7 +24,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           li.nav-item.dropdown.ml-5
             a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
               - if current_user
-                = "[#{current_user.username}]"
+                = "[#{current_user.full_name}]"
               -else
                 | Account
             .dropdown-menu aria-labelledby="navbarDropdown"
