@@ -10,10 +10,11 @@ class UsersController < ApplicationController
   def search
     respond_to do |format|
       if params[:friend].present?
-        @friend = User.find(2)
-        flash.now[:alert] = 'Please enter a valid name to search' unless @friend
+        @friend_s = User.search(params[:friend])
+        @friend_s = current_user.except_current_user(@friend_s)
+        flash.now[:alert] = "Couldn't find user" unless @friend_s
       else
-        flash.now[:alert] = 'Please enter a name to search'
+        flash.now[:alert] = 'Please enter a name or email to search'
       end
       format.js { render partial: 'users/friend_result' }
     end

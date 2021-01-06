@@ -43,6 +43,10 @@ class User < ApplicationRecord
     where("#{field_name} like ?", "%#{param}%")
   end
 
+  def except_current_user(users)
+    users.reject { |user| user.id == id }
+  end
+
   def stock_already_tracked?(ticker_symbol)
     stock = Stock.check_db(ticker_symbol)
     return false unless stock
