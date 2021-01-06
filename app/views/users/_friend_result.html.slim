@@ -1,0 +1,14 @@
+.col-sm-9
+  - if @friend
+    .card.mb-3
+      .card-header
+        .row.justify-content-between
+          .col-auto
+            = @friend.username
+          .col-auto
+            strong= @friend.first_name
+          .col-auto 
+            = @friend.last_name
+        / = link_to user_stocks_path(user: current_user, ticker: @stock.ticker), class: 'stretched-link', method: :post do
+  -else
+    = render 'layouts/messages'

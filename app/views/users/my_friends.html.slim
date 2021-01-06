@@ -1,5 +1,17 @@
 .text-center
   h1 My Friends
+  .search-area
+    h3 Search Friends
+    = form_tag search_friend_path, remote: true, method: :get do
+      .form-group.row.mt-3
+        .col-sm-9
+          = text_field_tag :friend, params[:friend], placeholder: 'User name', autofocus: true, class: 'form-control form-control-lg'
+        .col-sm-3
+          = button_tag type: :submit, class: 'btn-success btn-block btn-lg' do
+            .fas.fa-search.mr-1
+            | Search
+
+div id='results'
 
 table.table.table-hover.text-center
   thead
