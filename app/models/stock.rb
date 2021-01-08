@@ -20,6 +20,16 @@ class Stock < ApplicationRecord
     end
   end
 
+  def self.update_prices(user)
+    stocks = user.stocks
+    client = IEX::Api::Client.new(
+      publishable_token: Rails.application.credentials.dig(:iex, :token),
+      secret_token: Rails.application.credentials.dig(:iex, :secret),
+      endpoint: 'https://sandbox.iexapis.com/v1'
+    )
+    stocks.each { |stock| stock.update_attribute(:last_price, client.price(stock.ticker)) }
+  end
+
   def self.check_db(ticker_symbol)
     where(ticker: ticker_symbol).first
   end

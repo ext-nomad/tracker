@@ -10,20 +10,26 @@
           = button_tag type: :submit, class: 'btn-success btn-block btn-lg' do
             .fas.fa-search.mr-1
             | Search
-
+    
 div id='results'
 
-.col-sm-9
-  table.table.table-hover.text-center
-    thead
-      tr
-        th scope="col"  Ticker
-        th scope="col"  Company name
-        th scope="col"  Last price
-    tbody
-      - if @tracked_stocks.any?
-        - @tracked_stocks.each do |stock|
-          = render 'users/stock', stock: stock
-      - else
-        tr
-          td colspan="3" You are not tracking any stocks yet
+.text-center
+  .row
+    .col-sm-9
+      table.table.table-hover.text-center
+        thead
+          tr
+            th scope="col"  Ticker
+            th scope="col"  Company name
+            th scope="col"  Last price
+        tbody
+          - if @tracked_stocks.any?
+            - @tracked_stocks.each do |stock|
+              = render 'users/stock', stock: stock
+          - else
+            tr
+              td colspan="3" You are not tracking any stocks yet
+    .col-sm-3
+      = link_to update_prices_path, class: 'btn btn-warning btn-block btn-lg' do
+        .fas.fa-sync-alt.mr-1
+        | Update prices

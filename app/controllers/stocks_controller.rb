@@ -10,4 +10,11 @@ class StocksController < ApplicationController
       format.js { render partial: 'users/result' }
     end
   end
+
+  def update; end
+
+  def update_prices
+    Stock.update_prices(current_user)
+    redirect_to my_portfolio_path, notice: 'Prices was successfully updated.'
+  end
 end
