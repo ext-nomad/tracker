@@ -54,6 +54,10 @@ class User < ApplicationRecord
     stocks.where(id: stock.id).exists?
   end
 
+  def not_friends_with?(id_of_friend)
+    !friends.where(id: id_of_friend).exist?
+  end
+
   def under_stock_limit?
     stocks.count < 10
   end
