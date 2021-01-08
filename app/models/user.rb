@@ -47,6 +47,10 @@ class User < ApplicationRecord
     users.reject { |user| user.id == id }
   end
 
+  def under_stock_limit?
+    stocks.count < 10
+  end
+
   def stock_already_tracked?(ticker_symbol)
     stock = Stock.check_db(ticker_symbol)
     return false unless stock
@@ -55,11 +59,7 @@ class User < ApplicationRecord
   end
 
   def not_friends_with?(id_of_friend)
-    !friends.where(id: id_of_friend).exist?
-  end
-
-  def under_stock_limit?
-    stocks.count < 10
+    !friends.where(id: id_of_friend).exists?
   end
 
   def can_track_stock?(ticker_symbol)

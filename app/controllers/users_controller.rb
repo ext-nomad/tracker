@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find(params[:id])
+    @user_tracked_stocks = @user.stocks
+  end
+
   def my_portfolio
     @tracked_stocks = current_user.stocks
   end

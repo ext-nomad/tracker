@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :user_stocks, only: %i[create destroy]
   resources :friendships, only: %i[create destroy]
+  resources :users, only: %i[show]
 
   root 'home#index'
   get 'about', to: 'home#about'

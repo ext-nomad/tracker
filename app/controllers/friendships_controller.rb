@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def create
-    current_user.friendship.build(friend_id: params[:friend])
+    current_user.friendships.build(friend_id: params[:friend])
     redirect_to my_friends_path, notice: 'Following friend' if current_user.save
   end
 

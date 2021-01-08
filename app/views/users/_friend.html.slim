@@ -1,6 +1,6 @@
-tr style="transform: rotate(0);" data-placement="bottom" data-toggle="tooltip" title=("Click to stop following this person")
+tr style="transform: rotate(0);" data-placement="bottom" data-toggle="tooltip" title=("Click to open profile")
   th scope="row"
-    / = link_to user_stock_path(stock), method: :delete, data: {confirm: 'Are you sure?'}, class: "stretched-link" do
+    = link_to user_path(user), class: 'stretched-link' do
     = user.email
   td=user.first_name
   td=user.last_name

@@ -1,0 +1,47 @@
+.text-center
+  h1 User details
+  .row
+    .col-sm-9
+      .card.mb-5
+        .card-header
+          .row.justify-content-between
+            .col-auto
+              = @user.username
+            .col-auto
+              strong= @user.first_name
+            .col-auto 
+              = @user.last_name
+    .col-sm-3
+      - if current_user.not_friends_with?(@user)
+        = link_to  "Follow", friendships_path(friend: @user), class: 'btn btn-lg btn-block btn-success', method: :post
+      - else
+        = link_to "Stop following", friendship_path(@user), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-lg btn-block btn-warning"
+
+
+  h3 Tracked Stocks
+
+  table.table.table-hover.text-center
+    thead
+      tr
+        th scope="col"  Ticker
+        th scope="col"  Company name
+        th scope="col"  Last price
+    tbody
+      - if @user_tracked_stocks.any?
+        - @user_tracked_stocks.each do |stock|
+          - if current_user.can_track_stock?(stock.ticker)
+            tr style="transform: rotate(0);" data-placement="bottom" data-toggle="tooltip" title=("Click to add this stock in your portfolio")
+              th scope="row"
+                = link_to user_stocks_path(user: current_user, ticker: stock.ticker), method: :post, class: "stretched-link" do
+                = stock.ticker
+              td=stock.name
+              td=stock.last_price
+          - else
+            tr style="transform: rotate(0);"
+              th scope="row"
+                = stock.ticker
+              td=stock.name
+              td=stock.last_price
+      - else
+        tr
+          td colspan="3" This user does not tracking any stocks yet
