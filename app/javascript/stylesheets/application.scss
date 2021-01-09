@@ -2,10 +2,20 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.85)
+    ),
+    url("../../assets/images/bg.jpg");
 }
 
 header {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+
+  .navbar-brand {
+    letter-spacing: -1px;
+    font-weight: bold;
+  }
 }
 
 main {
@@ -13,8 +23,16 @@ main {
 }
 
 footer {
-  margin-top: 50px;
+  margin-top: 20px;
   padding: 20px 0px;
+  background-color: white;
+  a:not(.btn) {
+    color: #444444;
+  }
+  a:hover {
+    color: rgb(150, 150, 150);
+    text-decoration: none;
+  }
 }
 
 .search-area {
